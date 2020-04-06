@@ -1,11 +1,21 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: :show
+  before_action :set_student, only: [:show, :activate]
   
   def index
     @students = Student.all
   end
 
   def show
+    #binding.pry
+  end
+
+  def activate
+    #binding.pry 
+    @student.active = !@student.active
+
+    @student.save
+
+    redirect_to @student
   end
 
   private
